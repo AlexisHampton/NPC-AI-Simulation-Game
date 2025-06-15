@@ -1,10 +1,15 @@
 # NPC-AI-Simulation-Game
+
+Work in progress
+
 A downloadable simulation game where NPCs do tasks based on their needs and jobs.
-Every 30 seconds, the npcs might do something different. 
-
-
 
 Link to download: https://severedstars.itch.io/npc-ai-simulation
+
+## Screenshots:
+
+![An NPC feeding her kid](Screenshots/Screenshot1.png?raw=true "An NPC feeding her kid")
+![Two NPCs talking](Screenshots/Screenshot2.png?raw=true "Two NPCs talking")
 
 ## Technologies Used:
 C#, Godot

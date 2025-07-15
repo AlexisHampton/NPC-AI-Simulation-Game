@@ -10,7 +10,6 @@ public partial class Task : Node3D {
     [Export] protected int maxNumNPCs = 1;
     [Export] protected bool isCultureTask = false;
     [Export] protected House house = null;
-    [Export] protected Array<Task> adjacentTasks = new Array<Task>();
 
     protected int numNPCs = 0;
     protected bool isFinished = true;
@@ -33,16 +32,17 @@ public partial class Task : Node3D {
     }
 
     //returns a score based only on distance for checking how good this task is
-    public float GetTaskScore(Vector3 npcPos, Need incomingNeed, Personality personality) {
+    public float GetTaskScore(Vector3 npcPos, Need incomingNeed, Personality personality = null) {
         int needScore = incomingNeed == taskBase.NeedSatisfied ? 100 : incomingNeed == Need.NONE ? 100 : 0;
         int incompleteScore = !isFinished ? 50 : 0;
-        int personalityScore = 0;
-        if (taskBase.Personality is not null)
-            personalityScore = 10 * taskBase.Personality.GetPersonalityMatchScore(personality.personalityDict);
+        /* int personalityScore = 0;
+         if (taskBase.Personality is not null)
+             personalityScore = 10 * taskBase.Personality.GetPersonalityMatchScore(personality.personalityDict);
+        */
         if (GetIsJobTask) //deter npcs from doing job tasks
             needScore += 100000000;
 
-        return GlobalPosition.DistanceTo(npcPos) - taskBase.Sparkliness - needScore - incompleteScore - personalityScore;
+        return GlobalPosition.DistanceTo(npcPos) - taskBase.Sparkliness - needScore - incompleteScore;
     }
 
     //Claims the task so other npcs cannot interfere

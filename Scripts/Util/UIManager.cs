@@ -4,10 +4,12 @@ using Godot;
 //development only
 public partial class UIManager : Node {
 
+    [ExportGroup("Menus")]
+    [Export] private InventoryUI inventoryUI;
+
     [ExportGroup("Time")]
     [Export] private Label timeLabel;
     [Export] private Label dayLabel;
-
 
     [ExportGroup("TimeScale")]
     [Export] private Label timeScaleLabel;
@@ -22,6 +24,14 @@ public partial class UIManager : Node {
         timeScaleLabel.Text = Engine.TimeScale.ToString();
     }
 
+    //Checks for buttons that open UI menus
+    // public override void _Input(InputEvent @event) {
+    //     //Waits for inventory input ('I' or 'B' key) to turn on/off inventoryPanel
+    //     if (@event.IsActionPressed("inventory"))
+    //         inventoryUI.TurnMenuOn();
+
+
+    // }
     //updates the time in military time
     public void UpdateGameTimeUI(int gameTime) {
         timeLabel.Text = Globals.Instance.GameTime.ToString();

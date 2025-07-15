@@ -19,6 +19,7 @@ public partial class Sittable : Node3D, ITaskHolder {
         isUsed = isOn;
     }
 
+    //Return all tasks on the seat
     public Array<Task> GetTasks() {
         return tasks;
     }

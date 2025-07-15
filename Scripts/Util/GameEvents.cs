@@ -6,7 +6,9 @@ public class GameEvents {
 
     public static event Action<int> OnTimeIncrease;
     public static event Action<DayOfTheWeek> OnDayIncrease;
+    public static event Action<bool> OnPlayerMovementStopped;
 
+    public static void RaisePlayerMovementStopped(bool canMove) => OnPlayerMovementStopped?.Invoke(canMove);
     public static void RaiseTimeIncrease(int gameTime) => OnTimeIncrease?.Invoke(gameTime);
     public static void RaiseDayIncrease(DayOfTheWeek day) => OnDayIncrease?.Invoke(day);
 }

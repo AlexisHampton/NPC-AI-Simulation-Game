@@ -7,9 +7,7 @@ using Godot.Collections;
 //House is a Place where an NPC lives
 public partial class House : Place {
 
-    [Export] private PackAwayTask packAwayTask;
 
-    public PackAwayTask GetPackAwayTask { get => packAwayTask; }
 
     public override void _Ready() {
         //npcOwnerName = npcOwner.Name;

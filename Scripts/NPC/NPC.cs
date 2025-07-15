@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+
 using static Godot.GD;
 
 //NPCs move to desired locations, preform tasks, and pick things up
@@ -12,24 +12,17 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
     [Export] protected Label3D nameLabel;
     [Export] protected Label3D taskLabel;
     [Export] protected NPCAge age;
-    [Export] protected Personality personality;
     [Export] protected Godot.Collections.Dictionary<NPC, NPCRelationship> npcRelationships = new Godot.Collections.Dictionary<NPC, NPCRelationship>();
-    [Export] protected int money;
     [Export] protected House house;
+
+    [ExportGroup("Inventory")]
+    [Export] protected Inventory basket;
     [Export] protected Job job;
     [Export] protected Job school;
 
-    [ExportGroup("Inventory")]
-    //for one item
-    [Export] protected Hands hands;
-    //for many items
-    [Export] protected DynamicInventory basket;
-    //for crates; optional
-    [Export] protected Driveable driveable;
 
     [ExportGroup("Tasks")]
     [Export] protected Array<Task> schedule = new Array<Task>();
-    [Export] protected Task hobby;
     [Export] protected Array<Task> favoredTasks = new Array<Task>();
     [Export] protected Culture culture;
     [Export] protected TalkTask talkTask;
@@ -40,7 +33,6 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
     [Export] protected NavigationAgent3D agent;
     [Export] protected float speed = 10;
     [Export] protected float rotationSpeed = 10;
-    [Export] protected CollisionShape3D collision;
     [Export] protected Timer followTimer;
     //tasks
     protected NPCNeed[] npcNeeds = new NPCNeed[4];
@@ -52,30 +44,23 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
     protected int taskStep = 0;
 
     //job task
-    protected int jobTaskIndex;
-    //determines whether npc can move on their own, or if something else is moving it, i.e. driving, or taking the bus
-    protected bool isRemoteControlled = false;
+    public int JobTaskIndex { get; private set; }
+
     //determines whether npc is following another character
     protected bool isFollowing;
     protected NPC npcToFollow;
 
     public Task GetCurrTask { get => currTask; }
     public int GetTaskStep { get => taskStep; }
-    public int SetTaskStep { set => taskStep = value; }
-    public int GetJobTaskIndex { get => jobTaskIndex; }
-    public Job GetJob { get => job; }
-    public Driveable GetCart { get => driveable; }
-    public PackAwayTask GetPackAwayTask { get => house.GetPackAwayTask; }
 
-    private Rid navMapRID;
     private Vector3 pastVel = new Vector3(-10000, -10000, -10000);
 
+    //initialize needs, schedule and house
     public override void _Ready() {
-        basket.Visible = false;
         nameLabel.Text = Name;
         for (int i = 0; i < npcNeeds.Length; i++) {
             Need need = (Need)Enum.Parse(typeof(Need), i.ToString());
-            int randAmt = 100; //RandRange(90, 100);
+            int randAmt = RandRange(90, 100);
             npcNeeds[i] = new NPCNeed(need, randAmt);
         }
 
@@ -86,41 +71,22 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         //set house
         house.SetNPCOwner(this);
 
-        jobTaskIndex = -1;
+        JobTaskIndex = -1;
         GameEvents.OnTimeIncrease += DecreaseAllNeeds;
         GameEvents.OnTimeIncrease += NextTask;
-        NavigationPaths.Instance.OnNavigationMapCreated += SetNavigationMap;
 
-        CallDeferred(MethodName.WaitForNavigationSync);
-    }
-
-    #region AI Navigation Movement
-    public async void WaitForNavigationSync() {
-        SetPhysicsProcess(false);
-        await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
-        SetPhysicsProcess(true);
-
-        navMapRID = NavigationPaths.Instance.GetNavigationMapNPC;
-
-        // SetNextTask(fa)
         // NextTask(0);
     }
 
-    public void SetNavigationMap() {
-        agent.SetNavigationMap(navMapRID);
-    }
+    #region AI Navigation Movement
 
+    //NPC moves to destination every physics frame
     public override void _PhysicsProcess(double delta) {
         //do interaction
 
 
-        //if moved by something else, i.e. a cart
-        if (isRemoteControlled)
-            return;
-
         //if following other character
         if (isFollowing) {
-            //UpdatePathfinding();
             if (GlobalPosition.DistanceTo(currTask.GlobalPosition) > 1)
                 isDoingTask = false;
         }
@@ -135,12 +101,12 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
             return;
         }
 
-
+        //get the next location to move to
         Vector3 nextLoc = agent.GetNextPathPosition();
-        //PrintS(Name, GlobalPosition, agent.TargetPosition);
         Vector3 offset = nextLoc - GlobalPosition;
         Vector3 newVel = offset.Normalized() * speed;
 
+        //If the npc is stuck, teleport to the next position
         if (Velocity == pastVel) {
             GlobalPosition = nextLoc;
             return;
@@ -151,26 +117,26 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
 
         MoveAndSlide();
 
-        //rotation
+        //rotate to face where its going
         offset.Y = 0;
         if (GlobalTransform.Origin.IsEqualApprox(GlobalPosition + offset))
             return;
         LookAt(GlobalPosition + offset, Vector3.Up);
     }
 
+
+    //Move npc to specified position
     public void Move(Vector3 pos) {
-        agent.SetNavigationMap(navMapRID);
         agent.TargetPosition = pos;
     }
 
     //don't collide with other things and hopefully npcs
     public void OnNavigationAgent3DVelocityComputed(Vector3 safeVel) {
-        if (isRemoteControlled)
-            return;
         Velocity = safeVel;
         MoveAndSlide();
     }
 
+    //NPC updates its pathfinding to follow specific npc 
     public void FollowCharacter(NPC npc) {
         npcToFollow = npc;
         if (isFollowing) return;
@@ -179,33 +145,33 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         isFollowing = true;
     }
 
+    //Sets target position for npc to trail behind at a good distance
     public void UpdatePathfinding() {
         agent.TargetPosition = npcToFollow.GlobalPosition + new Vector3(1, 0, 1);
-
     }
 
+    //Resets NPC to stop following an npc
     public void StopFollow() {
         if (!isFollowing) return;
 
         npcToFollow = null;
         followTimer.Timeout -= UpdatePathfinding;
         isFollowing = false;
-
     }
 
     #endregion
-    //.--------------NPC AI-------------------
+    //--------------NPC AI-------------------
 
+    //returns if npc is preoccupied
     public bool IsDoingTask() => isDoingTask;
 
     #region NextTask
+
+    //Gets the next task for the npc to do
     protected void NextTask(int time) {
         PrintS(Name, timeLeftOnTask, currTask?.Name);
-        if (currTask != null) {
 
-            PrintS(Name, "is doing currTaskStep:", taskStep, !currTask.GetIsFinished);
-            //currTask.DoTask(this);
-            //taskStep++;
+        if (currTask != null) {
             isDoingTask = true;
             //check if already doing task and if duration task
             if (currTask.GetIsDurationTask && timeLeftOnTask > 0) {
@@ -218,7 +184,7 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         }
         currTask?.FinishTask(this);
 
-        //get next task
+        //get cached next task
         currTask = schedule[time];
         PrintS(Name, "is looking for a task");
 
@@ -253,6 +219,7 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         ClaimTask(currTask);
     }
 
+    //NPC claims the task they will do next so no other npc can do it
     protected void ClaimTask(Task task) {
         currTask = task;
         currTask.ClaimTask(this);
@@ -260,20 +227,18 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         taskStep = 0;
         taskLabel.Text = currTask.GetTaskName;
 
-        if (!isRemoteControlled && !isFollowing)
+        if (!isFollowing)
             Move(currTask.GetTaskPosition());
-        else if (isRemoteControlled) //only carts can move right now, so move using a cart
-            driveable.Move(currTask.GetTaskPosition());
+
         isDoingTask = true;
     }
 
     //finds the next task 
     protected virtual Task FindNextTask(int time) {
-        PrintNeeds();
+        //PrintNeeds();
         //need task
 
         List<Task> closest = FindTasksInAreaPlace();
-        PrintS(Name, closest.Count);
 
         Need lowest = Need.NONE;
         if (!NeedsHighEnough()) {
@@ -282,9 +247,12 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         }
 
         //goals task
-        PrintS(Name, "personality: ", personality.ToString());
         Task bestTask = GetBestTask(closest, lowest);
+        if (bestTask != null)
+            PrintS("bestTask is ", bestTask.ToString());
+
         if (bestTask != null && bestTask.GetIsPartnerTask) {
+            PrintS("bestTask is ", bestTask.ToString());
             //social task
             NPC partner = FindSocialPartner(bestTask);
             if (bestTask is TalkTask && partner is not null)
@@ -295,19 +263,21 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         //hobby?
 
         //favored tasks
+        /*
         Task favored = DoFavoredTask();
         if (favored != null) {
             PrintS(Name, "is doing favored task");
             return favored;
         }
-
         //do non mandatory cultureTask
         Task cultureTask = culture.tasks[time];
         if (cultureTask.CheckIfCanDoTask(this)) {
             PrintS(Name, "is doing a culture task that is not mandatory");
             return cultureTask;
         }
-        PrintS(Name, "is looking for a home task", house.GetPlaceTasks().Count);
+*/
+
+        PrintS(Name, "is looking for a home task", house.GetPlaceTasks().Count, house.Name);
         Task homeTask = GetBestTask(house.GetPlaceTasks(), lowest);
         if (homeTask is not null && homeTask.CheckIfCanDoTask(this)) {
             PrintS(Name, "is doing a home task as a last resort");
@@ -317,19 +287,19 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         return null;
     }
 
-
+    //Finds a task that the NPC has to do like going to work, school, or a culture task like going to church
     protected virtual Task FindMandatoryTask(int time) {
-        //culture task
-        Task cultureTask = culture.tasks[time];
-        if (cultureTask.GetIsCultureTask && cultureTask.CheckIfCanDoTask(this)) {
-            PrintS(Name, "is doing mandatory Culture Task");
-            return cultureTask;
-        }
-
+        //culture task is not implemented yet in the new version
+        /*        Task cultureTask = culture.tasks[time];
+                if (cultureTask.GetIsCultureTask && cultureTask.CheckIfCanDoTask(this)) {
+                    PrintS(Name, "is doing mandatory Culture Task");
+                    return cultureTask;
+                }
+        */
         //job task
         //if time is during job time, find job task
         if (job != null && job.IsJobDay() && time >= job.GetStartTime && time < job.GetEndTime) {
-            jobTaskIndex++;
+            JobTaskIndex++;
             Task jobTask = job.GetJobTask(this);
             if (jobTask != null) {
                 PrintS(Name, "is doing job task");
@@ -340,7 +310,7 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         //school task
         //if time is during school time, find school task
         if (school != null && school.IsJobDay() && time >= school.GetStartTime && time < school.GetEndTime) {
-            jobTaskIndex++;
+            JobTaskIndex++;
             Task schoolTask = school.GetJobTask(this);
             if (schoolTask != null) {
                 PrintS(Name, "is doing school task");
@@ -348,7 +318,7 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
             }
         }
 
-        jobTaskIndex = -1;
+        JobTaskIndex = -1;
         return null;
     }
 
@@ -376,7 +346,7 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         PriorityQueue<Task, float> potentialTasks = new();
 
         foreach (Task task in closest)
-            potentialTasks.Enqueue(task, task.GetTaskScore(GlobalPosition, lowest, personality));
+            potentialTasks.Enqueue(task, task.GetTaskScore(GlobalPosition, lowest));
 
         potentialTasks.TryDequeue(out Task bestTask, out _);
 
@@ -394,9 +364,10 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         return bestTask;
     }
 
+    //interrupts npc from current task and gives them a new task
     public void Interupt(Task newTask) {
         interruptedTask = currTask;
-        if (currTask is SitTask) currTask.FinishTask(this);
+        //if (currTask is SitTask) currTask.FinishTask(this);
         SetNextTask(newTask);
     }
 
@@ -448,23 +419,20 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
     //Finds all the tasks around the npc
     protected List<Task> FindTasksInAreaPlace() {
         List<Task> closest = new List<Task>();
-        PrintS(Name, "place tasks", shapecast.GetCollisionCount());
         if (!shapecast.IsColliding())
             return closest;
         for (int i = 0; i < shapecast.GetCollisionCount(); i++) {
+            //finds tasks in commercial spaces
             if (shapecast.GetCollider(i) is Area3D area && area.GetParent() is CommercialSpace commSpace) {
-                PrintS(Name, "place task", commSpace.Name, "task count:", commSpace.GetPlaceTasks().Count);
                 foreach (Task task in commSpace.GetPlaceTasks()) {
                     if (!task.GetIsJobTask) {
-                        PrintS(Name, "place task", task.Name);
                         closest.Add(task);
                     }
                 }
+                //finds tasks in ITaskHolders i.e. NPCs
             } else if (shapecast.GetCollider(i) is ITaskHolder taskHolder) {
-                PrintS(Name, "taskholder", ((Node3D)shapecast.GetCollider(i)).Name, "task count:", taskHolder.GetTasks().Count);
                 foreach (Task task in taskHolder.GetTasks()) {
                     if (!task.GetIsJobTask) {
-                        PrintS(Name, "place task", task.Name);
                         closest.Add(task);
                     }
                 }
@@ -474,19 +442,21 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         return closest;
     }
 
-    //Finds all the tasks around the npc
+    //Finds a friend for the npc to do a partner task with
     protected NPC FindSocialPartner(Task partnerTask) {
         NPC npcToTalkTo = null;
 
+        //random chance will be replaced with personality in future iterations
         float randNum = Randf();
         //Find NPC
-        if (randNum > .3 && npcRelationships?.Count != 0)
+        //30% chance of an npc looking through their current relationships to find a friend
+        if (randNum > 0.3 && npcRelationships?.Count != 0)
             foreach (NPC npc in npcRelationships.Keys) {
                 if (npc.currTask is not null && !npc.currTask.GetIsInterruptableTask) continue;
                 npcToTalkTo = npc;
                 break;
             }
-        else {
+        else { //70% chance of an npc to find a random npc in the vicinity
             if (!shapecast.IsColliding()) return null;
             for (int i = 0; i < shapecast.GetCollisionCount(); i++) {
                 if (shapecast.GetCollider(i) is not NPC npc) continue;
@@ -511,6 +481,7 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
 
     #region Relationships
 
+    //Updates NPC relationships with other npcs
     public void UpdateNPCRelationship(NPC npc, float relationshipLevel) {
         if (npcRelationships.ContainsKey(npc)) {
             npcRelationships[npc].IncreaseFriendshipLevel(relationshipLevel);
@@ -524,6 +495,8 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
 
     }
 
+
+    //Returns an npc relationship for the specified npc
     public NPCRelationship GetNPCRelationship(NPC npc) {
         return npcRelationships.ContainsKey(npc) ? npcRelationships[npc] : null;
     }
@@ -531,26 +504,9 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
     #endregion
     //-----------------------Inventory-------------------------------
     #region Inventory
-    //---Hands-----
-    public bool AreHandsEmpty() {
-        return hands.IsEmpty();
-    }
-
-    //Adds an specified item to hands
-    public void PickUp(ItemR item) {
-        hands.PickUp(item);
-    }
-    public void PickUp(Item item) {
-        hands.PickUp(item);
-    }
-
-    //Removes the item from hands
-    public Item PutDown(bool canDestroyItem) {
-        return hands.PutDown(canDestroyItem);
-    }
-
     //---Basket---
-
+    // the basket concept might be deprecated in future versions
+    /*
     //Checks if the basket is empty
     public bool IsBasketEmpty() {
         return basket.IsEmpty();
@@ -561,7 +517,7 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
     }
 
     //Adds an amount of itemR to the basket
-    public void AddToBasket(ItemR item, int amt) {
+    public void AddToBasket(Item item, int amt) {
         basket.Visible = true;
         basket.AddToInventory(item, amt);
     }
@@ -572,33 +528,21 @@ public partial class NPC : CharacterBody3D, ITaskHolder {
         if (IsBasketEmpty())
             basket.Visible = false;
     }
+    */
 
-    //Removes all the items from the basket
-    public List<ItemInfo> EmptyBasket() {
-        List<ItemInfo> itemInfos = basket.RemoveAllFromInventory();
-        basket.Visible = false;
-        return itemInfos;
-    }
-
-    //Turns off or on collision depending on input
-    public void TurnOnCollision(bool canTurnOn) {
-        collision.Disabled = canTurnOn;
-    }
-
-    //Turns on or off agent navigation depending on input
-    public void GiveRemoteControl(bool canGiveRC) {
-        isRemoteControlled = canGiveRC;
-    }
-
+    //Return all tasks on the NPC
     public Array<Task> GetTasks() {
         Task[] tasks = [talkTask];
         return new Array<Task>(tasks);
     }
 
+
+    //updates the task label for the task the npc is doing
     public void UpdateTaskLabel(string taskMessage) {
         taskLabel.Text += " " + taskMessage;
     }
 
+    //returns a string of the current, next, and interrupted task names
     public string PrintNextInterruptableTask() {
         return " ct: " + currTask?.Name + " nt: " + nextTask?.Name + " it: " + interruptedTask?.Name;
     }

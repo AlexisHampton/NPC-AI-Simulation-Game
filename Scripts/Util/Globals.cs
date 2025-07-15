@@ -12,7 +12,11 @@ public partial class Globals : Node {
     [Export] public UIManager UIManager { get; private set; }
     [Export] public Player Player { get; private set; }
 
+    [ExportGroup("Information")]
     [Export] public Dictionary<RelationshipStatus, SocialActionList> AllSocialActions { get; private set; } = new Dictionary<RelationshipStatus, SocialActionList>();
+    [Export] public Array<RecipieR> AllCookingRecipies = new();
+
+
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() {

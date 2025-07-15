@@ -9,9 +9,14 @@ The new version, which supports more recent changes, will not be deployed yet; h
 Link to download: https://severedstars.itch.io/npc-ai-simulation
 
 ## Screenshots:
+<img src="Screenshots/Screenshot1.png?raw=true" alt="An NPC feeding her kid" width="600">
+<img src="Screenshots/Screenshot2.png?raw=true" alt="Two NPCs talking" width="600">
 
-![An NPC feeding her kid](Screenshots/Screenshot1.png?raw=true "An NPC feeding her kid")
-![Two NPCs talking](Screenshots/Screenshot2.png?raw=true "Two NPCs talking")
+### From the new version
+<img src="Screenshots/chopping wood screenshot.png?raw=true" alt="Player chopping trees" width="600">
+<img src="Screenshots/crafting screenshot.png?raw=true" alt="Player crafting via a UI" width="600">
+<img src="Screenshots/gardening screenshot.png?raw=true" alt="Player after planting a seed" width="600">
+
 
 ## Technologies Used:
 C#, Godot

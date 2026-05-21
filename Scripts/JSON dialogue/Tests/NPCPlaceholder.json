@@ -1,0 +1,235 @@
+{
+  "C0_T1_C1_1": {
+	"name": "Lotch",
+	"text": "Tera's blessings on you.",
+	"goto": "C0_T1_C1_2"
+  },
+  "C0_T1_C1_2": {
+	"name": "Lotch",
+	"text": "Is there something the Veil Above could help you with?",
+	"goto": "C0_T1_C1_3",
+	"options": "I'm looking for a lord"
+  },
+  "C0_T1_C1_3": {
+	"name": "Lotch",
+	"text": "Tera does not concern herself with the comings and goings of her children. If you are looking for someone, ask a lesser god.",
+	"goto": "C0_T1_C1_4"
+  },
+  "C0_T1_C1_4": {
+	"name": "Lotch",
+	"text": "And if none avail themselves to you, ask a mortal.",
+	"goto": "C0_T1_C1_5"
+  },
+  "C0_T1_C1_5": {
+	"name": "Lotch",
+	"text": "One by the name Neve lives around here. Dark hair, red clothes.",
+	"goto": "C0_T1_C1_6"
+  },
+  "C0_T1_C1_6": {
+	"name": "Lotch",
+	"text": "If she can\\'t help you, I'm afraid your lord isn't here.",
+	"goto": "C0_T1_C1_7"
+  },
+  "C0_T1_C1_7": {
+	"name": "Lotch",
+	"text": "But Tera will be.",
+	"goto": "C0_T1_C1_8"
+  },
+  "C0_T1_C1_8": {
+	"name": "Lotch",
+	"text": "Give yourself to her once you are finished with your earthly conquests.",
+	"goto": "C0_T1_C1_9"
+  },
+  "C0_T1_C1_9": {
+	"name": "Lotch",
+	"text": "If she finds you worthy, you may recieve blessings."
+  },
+  "C1_T1_C1_1": {
+	"name": "Neve",
+	"text": "Yes?",
+	"goto": "C1_T1_C1_2",
+	"options": "I'm looking for a lord"
+  },
+  "C1_T1_C1_2": {
+	"name": "Neve",
+	"text": "You'll have to be more specific. Lords of all over pass through here.",
+	"goto": "C1_T1_C1_3",
+	"options": "His name is Hudris. You two are aquainted."
+  },
+  "C1_T1_C1_3": {
+	"name": "Neve",
+	"text": "You shouldn't believe everything you hear.",
+	"goto": "C1_T1_C1_4"
+  },
+  "C1_T1_C1_4": {
+	"name": "Neve",
+	"text": "I might know of someone by that name.",
+	"goto": "C1_T1_C1_5"
+  },
+  "C1_T1_C1_5": {
+	"name": "Neve",
+	"text": "If you're the guard you look like, you'll know where to search.",
+	"goto": "C1_T1_C1_6"
+  },
+  "C1_T1_C1_6": {
+	"name": "Neve",
+	"text": "Tell Swan I said hi."
+  },
+  "C2_T1_C1_1": {
+	"name": "Swan",
+	"text": "Hello. Is there something the Rind Guard could help you with?",
+	"goto": "C2_T1_C1_2",
+	"options": "Neve says hi."
+  },
+  "C2_T1_C1_2": {
+	"name": "Swan",
+	"text": "Does she? Tell me why you're really here.",
+	"goto": "C2_T1_C1_3",
+	"options": "I'm looking for a lord, Hudris of Camithenya."
+  },
+  "C2_T1_C1_3": {
+	"name": "Swan",
+	"text": "Yes, he's here. In the apartments.",
+	"goto": "C2_T1_C1_4"
+  },
+  "C2_T1_C1_4": {
+	"name": "Swan",
+	"text": "You'll have to figure out which one.",
+	"goto": "C2_T1_C1_5"
+  },
+  "C2_T1_C1_5": {
+	"name": "Swan",
+	"text": "If you see that wretch again, tell her the grass is yellow.",
+	"goto": "C2_T1_C1_6"
+  },
+  "C2_T1_C1_6": {
+	"name": "Swan",
+	"text": "And don't ever speak to me again.",
+	"goto": "C2_T1_C1_7"
+  },
+  "C2_T1_C1_7": {
+	"name": "Swan",
+	"text": "The fields know no limit. And many workers make bountiful crop."
+  },
+  "Hudris_1": {
+	"name": "Hudris",
+	"text": "No one is home.",
+	"goto": "Hudris_2",
+	"options": "Is that you, Hudris?"
+  },
+  "Hudris_2": {
+	"name": "Hudris",
+	"text": "What are you doing here?",
+	"goto": "Hudris_3",
+	"options": "The guards send their regards."
+  },
+  "Hudris_3": {
+	"name": "Hudris",
+	"text": "Do they? You don't have to do this, you know.",
+	"goto": "Hudris_4"
+  },
+  "Hudris_4": {
+	"name": "Hudris",
+	"text": "I can help you with that problem of yours. You've met my contacts in djkdal/",
+	"goto": "Hudris_5"
+  },
+  "Hudris_5": {
+	"name": "Hudris",
+	"text": "Just tell them I've gone.",
+	"goto": "Hudris_6",
+	"options": "Is this not the fraud charge I was informed of?"
+  },
+  "Hudris_6": {
+	"name": "Hudris",
+	"text": "Worse than blasphemy. It's a miracle I'm still here.",
+	"goto": "Hudris_7"
+  },
+  "Hudris_7": {
+	"name": "Hudris",
+	"text": "We were friends once. You remember.",
+	"goto": "Hudris_8",
+	"options": "It's hard to remember with the Captain's breath on my neck"
+  },
+  "Hudris_8": {
+	"name": "Hudris",
+	"text": "Then don't go back. You don't even work for them.",
+	"goto": "Hudris_9",
+	"options": "I can't have my reputation sullied."
+  },
+  "Hudris_9": {
+	"name": "Hudris",
+	"text": "I don't have a golden cushion to fall back on.",
+	"goto": "Hudris_10"
+  },
+  "Hudris_10": {
+	"name": "Hudris",
+	"text": "They won't keep me in those dungeons for long.",
+	"goto": "Hudris_11",
+	"options": "You'd let iron confine you?"
+  },
+  "Hudris_11": {
+	"name": "Hudris",
+	"text": "You don't get it.",
+	"goto": "Hudris_12",
+	"options": "What I don't understand is why you're still here. You wanted me to find you."
+  },
+  "Hudris_12": {
+	"name": "Hudris",
+	"text": "I was wrong.",
+	"goto": "Hudris_13",
+	"options": "You can get out Hudris. The day you stop fighting is the day you die."
+  },
+  "Hudris_13": {
+	"name": "Hudris",
+	"text": "Just this once.",
+	"goto": "Hudris_14"
+  },
+  "Hudris_14": {
+	"name": "Hudris",
+	"text": "Please.",
+	"goto": "Hudris_15",
+	"options": "Let's go."
+  },
+  "Hudris_15": {
+	"name": "Hudris",
+	"text": "Neve, please.",
+	"goto": "Hudris_16",
+	"options": "Hudris."
+  },
+  "Hudris_16": {
+	"name": "Hudris",
+	"text": "...",
+	"goto": "Hudris_17"
+  },
+  "Hudris_17": {
+	"name": "Hudris",
+	"text": "I'm not here.  I left before you could find me.",
+	"goto": "Hudris_18"
+  },
+  "Hudris_18": {
+	"name": "Hudris",
+	"text": "Search Davruin, by the ruins. There's a small cottage on the cliffside.",
+	"goto": "Hudris_19"
+  },
+  "Hudris_19": {
+	"name": "Hudris",
+	"text": "I've got family there. Distant, just the kind you need to disappear. They've seen me recently.",
+	"goto": "Hudris_20",
+	"options": "I heard this from?"
+  },
+  "Hudris_20": {
+	"name": "Hudris",
+	"text": "Mathis. He was drunk, in the Seedy Barrel. He didn't even recognize the badge.",
+	"goto": "Hudris_21"
+  },
+  "Hudris_21": {
+	"name": "Hudris",
+	"text": "My life is yours.",
+	"goto": "Hudris_22",
+	"options": "May Hina never find you."
+  },
+  "Hudris_22": {
+	"name": "Hudris",
+	"text": "And may her punishments stray from your family."
+  }
+}

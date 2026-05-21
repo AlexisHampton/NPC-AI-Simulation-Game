@@ -1,0 +1,322 @@
+{
+  "Rashmi_intro": {
+	"name": "Rashmi",
+	"text": "You're that new tourist in town, aren't you?",
+	"goto": "RI_T1_C1_1; RI_T1_C2_1",
+	"options": "Doing a bit of light travel; What gave it away?"
+  },
+  "RI_T1_C1_1": {
+	"name": "Rashmi",
+	"text": "I've been there before. The inn food is always surprising. It's always better to cook your own food",
+	"goto": "RI_T1_C1_2"
+  },
+  "RI_T1_C1_2": {
+	"name": "Hirani",
+	"text": "I'm not here to buy. Not anything you have here.",
+	"goto": "RI_T1_C1_3"
+  },
+  "RI_T1_C1_3": {
+	"name": "Rashmi",
+	"text": "Unfortunately, all I have is what you see.",
+	"goto": "RI_T2_C1; RI_T2_C2",
+	"options": "All right; A shame, I was looking forward to more exotic items in my possession"
+  },
+  "RI_T2_C1": {
+	"name": "Rashmi",
+	"text": "Be sure to stop again.",
+	"func": "SPELL"
+  },
+  "RI_T2_C2": {
+	"name": "Rashmi",
+	"text": "Then you'll need to shop somewhere else."
+  },
+  "RI_T1_C2_1": {
+	"name": "Rashmi",
+	"text": "You remind me of some people I used to know in my old life.",
+	"goto": "RI_T1_C2_2"
+  },
+  "RI_T1_C2_2": {
+	"name": "Rashmi",
+	"text": "The kind that ran around looking for trouble.",
+	"goto": "RI_T1_C2_3"
+  },
+  "RI_T1_C2_3": {
+	"name": "Rashmi",
+	"text": "You won't find any of that here, I promise. I've done a great deal to keep it that way.",
+	"goto": "RI_T1_C2_4"
+  },
+  "RI_T1_C2_4": {
+	"name": "Hirani",
+	"text": "Trouble? I'm just a tourist passing through.",
+	"goto": "RI_T1_C2_5"
+  },
+  "RI_T1_C2_5": {
+	"name": "Rashmi",
+	"text": "Then we won't have any problems.",
+	"goto": "RI_T2_C1"
+  },
+  "": {},
+  "Rueni_Intro": {
+	"name": "Rueni",
+	"text": "I didn't expect to see you here. Is there anything I can find for you?",
+	"goto": "RUI_T1_C1_1; RUI_T2_C1_1",
+	"options": "I didn't realize tiny towns needed librarians; I'm looking for an ancient tome"
+  },
+  "RUI_T1_C1_1": {
+	"name": "Rueni",
+	"text": "You must live in a world where people put books back in their place.",
+	"goto": "RUI_T1_C1_2"
+  },
+  "RUI_T1_C1_2": {
+	"name": "Rueni",
+	"text": "You didn't come all this way just to meet me, have you?",
+	"goto": "RUI_T1_C1_3"
+  },
+  "RUI_T1_C1_3": {
+	"name": "Rueni",
+	"text": "I'm afraid I'm rather boring. These books are my home. My solace.",
+	"goto": "RUI_T1_C1_4"
+  },
+  "RUI_T1_C1_4": {
+	"name": "Rueni",
+	"text": "I prefer their comapny over living beings so I would advise you to leave if you are not reading, as per library policy.",
+	"goto": "RUI_T2_C1_1; RUI_T2_C2",
+	"options": "I'm looking for an ancient tome; Then I will take my leave"
+  },
+  "RUI_T2_C1_1": {
+	"name": "Rueni",
+	"text": "We don't have any.",
+	"goto": "RUI_T2_C1_2"
+  },
+  "RUI_T2_C1_2": {
+	"name": "Rueni",
+	"text": "Most boks here are recent, within two centuries. Most on history or fiction.",
+	"goto": "RUI_T3_C1_1; RUI_T3_C2",
+	"options": "Clean history?; Dirty fiction?"
+  },
+  "RUI_T3_C1_1": {
+	"name": "Rueni",
+	"text": "What the council recommends and nothing more.",
+	"goto": "RUI_T3_C1_2"
+  },
+  "RUI_T3_C1_2": {
+	"name": "Hirani",
+	"text": "Then I'll see myself out."
+  },
+  "RUI_T3_C2": {
+	"name": "Rueni",
+	"text": "On the back shelf."
+  },
+  "RUI_T2_C2": {
+	"name": "Rueni",
+	"text": "May Kaipheria guide you"
+  },
+  "Kastori_intro": {
+	"name": "Kastori",
+	"text": "Hello there. Are you looking to buy a dagger or maybe a knife?",
+	"goto": "KI_T1_C1_1; KI_T1_C2_1",
+	"options": "No, I'm just wandering; Do you sell anything else?"
+  },
+  "KI_T1_C1_1": {
+	"name": "Kastori",
+	"text": "Must be nice to have no pressing issues to worry about.",
+	"goto": "KI_T1_C1_2"
+  },
+  "KI_T1_C1_2": {
+	"name": "Kastori",
+	"text": "It's not often people pass by just for some old tales or a reprieve from adventuring.",
+	"goto": "KI_T1_C1_3"
+  },
+  "KI_T1_C1_3": {
+	"name": "Kastori",
+	"text": "You know, most adventurers that come this way search for lost, ancient treasure or magic spells, unknowing that the true magic was the stories we share.",
+	"goto": "KI_T2_C1_1; KI_T2_C2_1",
+	"options": "Magic?; Not many have good stories"
+  },
+  "KI_T2_C1_1": {
+	"name": "Kastori",
+	"text": "Not the real thing, of course. I try not to mess with that.",
+	"goto": "KI_T2_C1_2"
+  },
+  "KI_T2_C1_2": {
+	"name": "Kastori",
+	"text": "I'm going to have to change if I'm going to be a role model.",
+	"goto": "KI_T2_C1_3"
+  },
+  "KI_T2_C1_3": {
+	"name": "Hirani",
+	"text": "But you've done magic?",
+	"goto": "KI_T2_C1_4"
+  },
+  "KI_T2_C1_4": {
+	"name": "Kastori",
+	"text": "When I was a different person, I did. But I sell metal now.",
+	"goto": "KI_T2_C1_5"
+  },
+  "KI_T2_C1_5": {
+	"name": "Kastori",
+	"text": "Armor, weapons, cool necklaces. The only important things you'll need before a battle. After prayer, that is.",
+	"goto": "KI_T4_C1; KI_T4_C2_1_var",
+	"options": "Thanks. I'll come back when I need something; Nothing more... exotic?"
+  },
+  "KI_T1_C2_1": {
+	"name": "Kastori",
+	"text": "Chain, chestplates, swords, arrows, steel gauntlets.",
+	"goto": "KI_T1_C2_2"
+  },
+  "KI_T1_C2_2": {
+	"name": "Kastori",
+	"text": "If you're brave enough I also have some leather, but I can't ensure it's quality. I didn't make it. Passing traveler did and I can't find them again.",
+	"goto": "KI_T4_C1; KI_T4_C2_1",
+	"options": "Thanks. I'll come back when I need something; Nothing more... exotic?"
+  },
+  "KI_T4_C1": {
+	"name": "Kastori",
+	"text": "Anytime. Always happy to talk!"
+  },
+  "KI_T4_C2_1": {
+	"name": "Kastori",
+	"text": "What's more exotic than random leather you can't get rid of? Armor's armor.",
+	"goto": "KI_T4_C2_2"
+  },
+  "KI_T4_C2_2": {
+	"name": "Kastori",
+	"text": "If you want something more custom, find me in five years."
+  },
+  "KI_T2_C2_1": {
+	"name": "Kastori",
+	"text": "Not many have finished theirs either. But maybe there's a good one waiting for you to grab it.",
+	"goto": "KI_T2_C2_2"
+  },
+  "KI_T2_C2_2": {
+	"name": "Kastori",
+	"text": "If I didn't believe in the happiness in this world, I wouldn't be married."
+  },
+  "KI_T4_C2_1_var": {
+	"name": "Kastori",
+	"text": "Not right now. I've only standard gear. My free time is very slim nowadays.",
+	"goto": "KI_T4_C2_2"
+  },
+  "R_OL_1": {
+	"name": "Rashmi",
+	"text": "I like apples"
+  },
+  "R_OL_2": {
+	"name": "Rashmi",
+	"text": "I like pomegrantes"
+  },
+  "R_OL_3": {
+	"name": "Rashmi",
+	"text": "I like pineapples"
+  },
+  "RU_OL_1": {
+	"name": "Rueni",
+	"text": "I like yogurt"
+  },
+  "RU_OL_2": {
+	"name": "Rueni",
+	"text": "I like milk"
+  },
+  "RU_OL_3": {
+	"name": "Rueni",
+	"text": "I like cheese"
+  },
+  "KI_OL_1": {
+	"name": "Kastori",
+	"text": "I like carrots"
+  },
+  "KI_OL_2": {
+	"name": "Kastori",
+	"text": "I like lettuce"
+  },
+  "KI_OL_3": {
+	"name": "Kastori",
+	"text": "I like broccoli"
+  },
+  "R_A_1": {
+	"name": "Rashmi",
+	"text": "Apples are fun when you eat them",
+	"goto": "R_A_2"
+  },
+  "R_A_2": {
+	"name": "Rashmi",
+	"text": "I've always liked Apples, because they are lovely.",
+	"func": "WSI"
+  },
+  "R_P_1": {
+	"name": "Rashmi",
+	"text": "Pomegranates are really funny and really pretty",
+	"goto": "R_P_2"
+  },
+  "R_P_2": {
+	"name": "Rashmi",
+	"text": "I like pome Pie and I want to eat it",
+	"func": "WSI"
+  },
+  "R_PI_1": {
+	"name": "Rashmi",
+	"text": "Pineapples are yummy in my tummy and I will eat them.",
+	"goto": "R_PI_2"
+  },
+  "R_PI_2": {
+	"name": "Rashmi",
+	"text": "If prinapples were nicer I wouldn't eat them",
+	"func": "WSI"
+  },
+  "RU_Y_1": {
+	"name": "Rueni",
+	"text": "Yogurt can be nice if you eat it fast",
+	"goto": "RU_Y_2"
+  },
+  "RU_Y_2": {
+	"name": "Rueni",
+	"text": "Please don't eat yogurt in the library"
+  },
+  "RU_M_1": {
+	"name": "Rueni",
+	"text": "Milk is yummy. My boyfriend brings it fresh from the marsh",
+	"goto": "RU_M_2"
+  },
+  "RU_M_2": {
+	"name": "Rueni",
+	"text": "But it spoils very easily. It usually doesn't taste good after two days outside the ice box"
+  },
+  "RU_C_1": {
+	"name": "Rueni",
+	"text": "Cheese is lovely. I try not it eat it too much.",
+	"goto": "RU_C_2"
+  },
+  "RU_C_2": {
+	"name": "Rueni",
+	"text": "It gives me digestive issues"
+  },
+  "K_C_1": {
+	"name": "Kastori",
+	"text": "Bunnies eat lots of carrots, and I like that about them.",
+	"goto": "K_C_2"
+  },
+  "K_C_2": {
+	"name": "Kastori",
+	"text": "I'm going to eat lots of carrots too"
+  },
+  "K_L_1": {
+	"name": "Kastori",
+	"text": "Lettuce is strange. I don't really like it.",
+	"goto": "K_L_2"
+  },
+  "K_L_2": {
+	"name": "Kastori",
+	"text": "But my wife makes it and I eat it.",
+	"func": "WSI"
+  },
+  "K_B_1": {
+	"name": "Kastori",
+	"text": "Brocolli is the key to these muscles.",
+	"goto": "K_B_2"
+  },
+  "K_B_2": {
+	"name": "Kastori",
+	"text": "My wife is very grateful.",
+	"func": "WSI"
+  }
+}

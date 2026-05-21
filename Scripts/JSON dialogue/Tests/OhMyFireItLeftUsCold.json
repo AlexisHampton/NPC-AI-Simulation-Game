@@ -1,0 +1,456 @@
+{
+  "C0_T1_C1_1": {
+	"id": "C0_T1_C1_1",
+	"name": "Parithya",
+	"text": "I thought we talked about not sharing?",
+	"goto": "C0_T1_C1_2"
+  },
+  "C0_T1_C1_2": {
+	"id": "C0_T1_C1_2",
+	"name": "Kaz",
+	"text": "This is a public tavern.",
+	"goto": "C0_T1_C1_3"
+  },
+  "C0_T1_C1_3": {
+	"id": "C0_T1_C1_3",
+	"name": "Parithya",
+	"text": "That doesn’t mean you can sit wherever you want.",
+	"goto": "C0_T1_C1_4"
+  },
+  "C0_T1_C1_4": {
+	"id": "C0_T1_C1_4",
+	"name": "Parithya",
+	"text": "This booth is spoken for. And you don’t have my permission.",
+	"goto": "C0_T1_C1_5"
+  },
+  "C0_T1_C1_5": {
+	"id": "C0_T1_C1_5",
+	"name": "Kaz",
+	"text": "I’m sorry you’re having the worst day right now, but there are more important things than a seat.",
+	"goto": "C0_T1_C1_6"
+  },
+  "C0_T1_C1_6": {
+	"id": "C0_T1_C1_6",
+	"name": "Parithya",
+	"text": "I don’t care.",
+	"goto": "C0_T1_C1_7"
+  },
+  "C0_T1_C1_7": {
+	"id": "C0_T1_C1_7",
+	"name": "Kaz",
+	"text": "We’ve got a job offer. For a healing potion that heals instantly. I saw the demo myself.",
+	"goto": "C0_T1_C1_8"
+  },
+  "C0_T1_C1_8": {
+	"id": "C0_T1_C1_8",
+	"name": "Parithya",
+	"text": "...",
+	"goto": "C0_T1_C1_9"
+  },
+  "C0_T1_C1_9": {
+	"id": "C0_T1_C1_9",
+	"name": "Erenis",
+	"text": "It’s a small job. Just a couple of ancient books.",
+	"goto": "C0_T1_C1_10"
+  },
+  "C0_T1_C1_10": {
+	"id": "C0_T1_C1_10",
+	"name": "Parithya",
+	"text": "From the most impenetrable library in the entire country?",
+	"goto": "C0_T1_C1_11"
+  },
+  "C0_T1_C1_11": {
+	"id": "C0_T1_C1_11",
+	"name": "Erenis",
+	"text": "I’ve taken care of that.",
+	"goto": "C0_T1_C1_12"
+  },
+  "C0_T1_C1_12": {
+	"id": "C0_T1_C1_12",
+	"name": "Parithya",
+	"text": "How?",
+	"goto": "C0_T1_C1_13"
+  },
+  "C0_T1_C1_13": {
+	"id": "C0_T1_C1_13",
+	"name": "Erenis",
+	"text": "Sleep. Healing isn’t the only thing I do.",
+	"goto": "C0_T1_C1_14"
+  },
+  "C0_T1_C1_14": {
+	"id": "C0_T1_C1_14",
+	"name": "Parithya",
+	"text": "Fine. I’m sure Kaz has read you the rules.",
+	"goto": "C0_T1_C1_15"
+  },
+  "C0_T1_C1_15": {
+	"id": "C0_T1_C1_15",
+	"name": "Erenis",
+	"text": "And I understand every one of them.",
+	"goto": "C0_T1_C1_16"
+  },
+  "C0_T1_C1_16": {
+	"id": "C0_T1_C1_16",
+	"name": "Kaz",
+	"text": "But we must act right now. We’ve no time to waste.",
+	"goto": "C0_T1_C1_17"
+  },
+  "C0_T1_C1_17": {
+	"id": "C0_T1_C1_17",
+	"name": "Erenis",
+	"text": "It is as he says. The spell isn’t as potent if I’m not there.",
+	"goto": "C0_T1_C1_18"
+  },
+  "C0_T1_C1_18": {
+	"id": "C0_T1_C1_18",
+	"name": "Parithya",
+	"text": "I know how it works.",
+	"goto": "C0_T1_C1_19"
+  },
+  "C0_T1_C1_19": {
+	"id": "C0_T1_C1_19",
+	"name": "Kaz",
+	"text": "Then let’s not dally.",
+	"func": [
+	  "JOINPARTY",
+	  "WSI"
+	]
+  },
+  "C1_T1_C1_1": {
+	"id": "C1_T1_C1_1",
+	"name": "Parithya",
+	"text": "It’s open.",
+	"goto": "C1_T1_C1_2"
+  },
+  "C1_T1_C1_2": {
+	"id": "C1_T1_C1_2",
+	"name": "Kaz",
+	"text": "It’s the middle of the day.",
+	"goto": "C1_T1_C1_3"
+  },
+  "C1_T1_C1_3": {
+	"id": "C1_T1_C1_3",
+	"name": "Parithya",
+	"text": "I just thought that halfling had more power.",
+	"goto": "C1_T1_C1_4"
+  },
+  "C1_T1_C1_4": {
+	"id": "C1_T1_C1_4",
+	"name": "Kaz",
+	"text": "There should be a side entrance for employees.",
+	"goto": "C1_T1_C1_5"
+  },
+  "C1_T1_C1_5": {
+	"id": "C1_T1_C1_5",
+	"name": "Parithya",
+	"text": "If everyone’s really asleep inside, then there’s no use being discreet.",
+	"goto": "C1_T1_C1_6"
+  },
+  "C1_T1_C1_6": {
+	"id": "C1_T1_C1_6",
+	"name": "Kaz",
+	"text": "It’s your call, boss.",
+	"goto": "C1_T1_C1_7"
+  },
+  "C1_T1_C1_7": {
+	"id": "C1_T1_C1_7",
+	"name": "Parithya",
+	"text": "Don’t call me that.",
+	"func": "WSI"
+  },
+  "C2_T1_C1_1": {
+	"id": "C2_T1_C1_1",
+	"name": "Parithya",
+	"text": "So far, your source checks out.",
+	"goto": "C2_T1_C1_2"
+  },
+  "C2_T1_C1_2": {
+	"id": "C2_T1_C1_2",
+	"name": "Kaz",
+	"text": "As I knew they would.",
+	"goto": "C2_T1_C1_3"
+  },
+  "C2_T1_C1_3": {
+	"id": "C2_T1_C1_3",
+	"name": "Parithya",
+	"text": "Let’s hurry up and finish this.",
+	"goto": "C2_T1_C1_4"
+  },
+  "C2_T1_C1_4": {
+	"id": "C2_T1_C1_4",
+	"name": "Kaz",
+	"text": "So you could get back to drinking or kissing people you don’t care about?",
+	"goto": "C2_T1_C1_5"
+  },
+  "C2_T1_C1_5": {
+	"id": "C2_T1_C1_5",
+	"name": "Parithya",
+	"text": "Let’s not fight right now, Kaz. The clock is ticking.",
+	"func": "WSI"
+  },
+  "C3_T1_C1_1": {
+	"id": "C3_T1_C1_1",
+	"name": "Parithya",
+	"text": "I think the book might be in the basement. Under the floorboards. In a tunnel that leads to a ditch far east.",
+	"goto": "C3_T1_C1_2"
+  },
+  "C3_T1_C1_2": {
+	"id": "C3_T1_C1_2",
+	"name": "Kaz",
+	"text": "It needs a key or a spell. But if I cast, the sleep will disperse.",
+	"goto": [
+	  "C3_T1_C1_3",
+	  "C3_T1_C2_1"
+	],
+	"options": [
+	  "Then let it",
+	  "Keys are boring, but they’ll do."
+	]
+  },
+  "C3_T1_C1_3": {
+	"id": "C3_T1_C1_3",
+	"name": "Kaz",
+	"text": "As you wish.",
+	"func": "DOSPELL"
+  },
+  "C3_T1_C2_1": {
+	"id": "C3_T1_C2_1",
+	"name": "Kaz",
+	"text": "It never hurts to be safe. Or out of jail.",
+	"goto": "C3_T1_C2_2"
+  },
+  "C3_T1_C2_2": {
+	"id": "C3_T1_C2_2",
+	"name": "Parithya",
+	"text": "Don’t worry, you’ll see the inside of a cell soon enough. People who hang around me often do.",
+	"func": "WSI"
+  },
+  "Key": {
+	"id": "Key",
+	"name": "Kaz",
+	"text": "Matches the keyhole.",
+	"func": "WSI"
+  },
+  "C4_T1_C1_1": {
+	"id": "C4_T1_C1_1",
+	"name": "Parithya",
+	"text": "These are more recent than I expected.",
+	"goto": "C4_T1_C1_2"
+  },
+  "C4_T1_C1_2": {
+	"id": "C4_T1_C1_2",
+	"name": "Kaz",
+	"text": "It’s just research on slime ooze properties. You can pack them with Raitma and chamomile to make better healing potions.",
+	"goto": "C4_T1_C1_3"
+  },
+  "C4_T1_C1_3": {
+	"id": "C4_T1_C1_3",
+	"name": "Parithya",
+	"text": "That’s all you need?",
+	"goto": "C4_T1_C1_4"
+  },
+  "C4_T1_C1_4": {
+	"id": "C4_T1_C1_4",
+	"name": "Kaz",
+	"text": "Not really. Subtle chemical reactions, I suppose. But this could help.",
+	"goto": "C4_T1_C1_5"
+  },
+  "C4_T1_C1_5": {
+	"id": "C4_T1_C1_5",
+	"name": "Parithya",
+	"text": "You don’t want to give them in?",
+	"goto": "C4_T1_C1_6"
+  },
+  "C4_T1_C1_6": {
+	"id": "C4_T1_C1_6",
+	"name": "Kaz",
+	"text": "They won’t need all the books.",
+	"goto": "C4_T1_C1_7"
+  },
+  "C4_T1_C1_7": {
+	"id": "C4_T1_C1_7",
+	"name": "Parithya",
+	"text": "They most certainly will not.",
+	"goto": "C4_T1_C1_8"
+  },
+  "C4_T1_C1_8": {
+	"id": "C4_T1_C1_8",
+	"name": "Kaz",
+	"text": "Let’s go bring these back.",
+	"func": "WSI"
+  },
+  "C5_T1_C1_1": {
+	"id": "C5_T1_C1_1",
+	"name": "Kaz",
+	"text": "Your books.",
+	"goto": "C5_T1_C1_2"
+  },
+  "C5_T1_C1_2": {
+	"id": "C5_T1_C1_2",
+	"name": "Erenis",
+	"text": "There wasn’t more?",
+	"goto": "C5_T1_C1_3"
+  },
+  "C5_T1_C1_3": {
+	"id": "C5_T1_C1_3",
+	"name": "Kaz",
+	"text": "Whatever’s there is what was there.",
+	"goto": "C5_T1_C1_4"
+  },
+  "C5_T1_C1_4": {
+	"id": "C5_T1_C1_4",
+	"name": "Erenis",
+	"text": "I appreciate your help.",
+	"goto": "C5_T1_C1_5"
+  },
+  "C5_T1_C1_5": {
+	"id": "C5_T1_C1_5",
+	"name": "Kaz",
+	"text": "And we appreciate your discretion.",
+	"goto": "C5_T1_C1_6"
+  },
+  "C5_T1_C1_6": {
+	"id": "C5_T1_C1_6",
+	"name": "Parithya",
+	"text": "And your potions.",
+	"goto": "C5_T1_C1_7"
+  },
+  "C5_T1_C1_7": {
+	"id": "C5_T1_C1_7",
+	"name": "Erenis",
+	"text": "Here you are.",
+	"goto": "C5_T1_C1_8",
+	"func": "GIVEPOTION"
+  },
+  "C5_T1_C1_8": {
+	"id": "C5_T1_C1_8",
+	"name": "Erenis",
+	"text": "It was good doing business with you.",
+	"goto": "C5_T1_C1_9"
+  },
+  "C5_T1_C1_9": {
+	"id": "C5_T1_C1_9",
+	"name": "Parithya",
+	"text": "Yes, it was.",
+	"goto": "C5_T1_C1_10"
+  },
+  "C5_T1_C1_10": {
+	"id": "C5_T1_C1_10",
+	"name": "Erenis",
+	"text": "I’m leaving. Sorry to hog your booth.",
+	"func": [
+	  "LEAVE",
+	  "WSI"
+	]
+  },
+  "C6_T1_C1_1": {
+	"id": "C6_T1_C1_1",
+	"name": "Parithya",
+	"text": "You don’t have to stay, you know. I like being alone.",
+	"goto": "C6_T1_C1_2"
+  },
+  "C6_T1_C1_2": {
+	"id": "C6_T1_C1_2",
+	"name": "Kaz",
+	"text": "We can be alone together.",
+	"goto": "C6_T1_C1_3"
+  },
+  "C6_T1_C1_3": {
+	"id": "C6_T1_C1_3",
+	"name": "Parithya",
+	"text": "Just don’t bother me. And don’t sign us up for more jobs without a private conversation.",
+	"goto": "C6_T1_C1_4"
+  },
+  "C6_T1_C1_4": {
+	"id": "C6_T1_C1_4",
+	"name": "Kaz",
+	"text": "Apologies. The prize was too good to pass up.",
+	"goto": "C6_T1_C1_5"
+  },
+  "C6_T1_C1_5": {
+	"id": "C6_T1_C1_5",
+	"name": "Parithya",
+	"text": "Then we should get some sleep. We’ll head out in the morning and get this where it belongs.",
+	"goto": "C6_T1_C1_6"
+  },
+  "C6_T1_C1_6": {
+	"id": "C6_T1_C1_6",
+	"name": "Kaz",
+	"text": "Alright then.",
+	"func": "GAMEOVER"
+  },
+  "start": {
+	"id": "start",
+	"name": "Parithya",
+	"text": "Why is the tavern open this early?",
+	"goto": "start_1"
+  },
+  "start_1": {
+	"id": "start_1",
+	"name": "Parithya",
+	"text": "Unless Mirna knew I'd be coming."
+  },
+  "Tavern_start": {
+	"id": "Tavern_start",
+	"name": "Parithya",
+	"text": "I think I'll take something a little harder today.",
+	"goto": "Tavern_start_1"
+  },
+  "Tavern_start_1": {
+	"id": "Tavern_start_1",
+	"name": "Mirna",
+	"text": "Alright, but you might want to check your booth first.",
+	"goto": "Tavern_start_2"
+  },
+  "Tavern_start_2": {
+	"id": "Tavern_start_2",
+	"name": "Parithya",
+	"text": "You let someone sit in my booth?",
+	"goto": "Tavern_start_3"
+  },
+  "Tavern_start_3": {
+	"id": "Tavern_start_3",
+	"name": "Mirna",
+	"text": "He said he's your friend.",
+	"goto": "Tavern_start_4"
+  },
+  "Tavern_start_4": {
+	"id": "Tavern_start_4",
+	"name": "Parithya",
+	"text": "That doesn't mean anything.",
+	"goto": "Tavern_start_5"
+  },
+  "Tavern_start_5": {
+	"id": "Tavern_start_5",
+	"name": "Parithya",
+	"text": "Please don't do that again.",
+	"goto": "Tavern_start_6"
+  },
+  "Tavern_start_6": {
+	"id": "Tavern_start_6",
+	"name": "Mirna",
+	"text": "Understood."
+  },
+  "Tavern_OL": {
+	"id": "Tavern_OL",
+	"name": "Mirna",
+	"text": "I'll get started on that drink."
+  },
+  "Erenis_OL": {
+	"id": "Erenis_OL",
+	"name": "Erenis",
+	"text": "Don't dally, or they'll wake up."
+  },
+  "Key_UF_C1_1": {
+	"id": "Key_UF_C1_1",
+	"name": "Parithya",
+	"text": "What kind of idiot leaves a key on the floor?",
+	"goto": "Key_UF_C1_2"
+  },
+  "Key_UF_C1_2": {
+	"id": "Key_UF_C1_2",
+	"name": "Kaz",
+	"text": "Probably Erenis.",
+	"options": "WSI"
+  }
+}

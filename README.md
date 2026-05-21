@@ -4,7 +4,7 @@ Work in progress
 
 A downloadable simulation game where NPCs do tasks based on their needs and jobs.
 
-The new version, which supports more recent changes, will not be deployed yet; however, the old version still retains the simulation vision, albeit without all the new RPG elements.
+The npcs interact with the world, each other, and the player
 
 Link to download: https://severedstars.itch.io/npc-ai-simulation
 
